@@ -15,9 +15,10 @@ import static com.sun.org.apache.xml.internal.serializer.utils.Utils.messages;
 public class CarsController {
 
     @GetMapping(value = "/cars")
-    public String getCars(@RequestParam(value = "count", required = false) Integer count, Model model){
-        model.addAttribute("carlist", CarsService.getCarsList());
-        model.addAttribute("count", CarsService.getCount(count, CarsService.getCarsList()));
+    public String getCars(@RequestParam(value = "count", required = false) Integer count,
+                          Model model, CarsService carsService){
+        model.addAttribute("carlist", carsService.getCarsList());
+        model.addAttribute("count", carsService.getCount(count));
         return "cars";
     }
 }

@@ -3,10 +3,11 @@ package web.service;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarsService {
+public class CarsService implements CarService {
 
-    public static List<String> getCarsList() {
-        List<String> carsList = new ArrayList<>();
+    List<String> carsList = new ArrayList<>();
+
+    public List<String> getCarsList() {
         carsList.add("VW G8");
         carsList.add("E46");
         carsList.add("W213");
@@ -14,10 +15,10 @@ public class CarsService {
         carsList.add("Teana");
         return carsList;
     }
-    public static Integer getCount(Integer count, List list) {
-        if (count != null && count < list.size()) {
+    public Integer getCount(Integer count) {
+        if (count != null && count < carsList.size()) {
             return count;
         }
-        return list.size();
+        return carsList.size();
     }
 }
